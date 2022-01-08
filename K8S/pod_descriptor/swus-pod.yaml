@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mme
+spec:
+  containers:
+  - name: swus-container
+    image: solejnik/swus-container:latest
+    ports:
+    - containerPort: 80
