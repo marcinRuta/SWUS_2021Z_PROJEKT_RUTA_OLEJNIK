@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: network-mme
+spec:
+  selector:
+    matchLabels:
+      app: mme
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: mme
+    spec:
+      containers:
+      - name: swus-container
+        image: solejnik/swus-container:latest
+        ports:
+        - containerPort: 80
+---
+kind: Deployment
+metadata:
+  name: network-upf
+spec:
+  selector:
+    matchLabels:
+      app: upf
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: upf
+    spec:
+      containers:
+      - name: swus-container
+        image: solejnik/swus-container:latest
+        ports:
+        - containerPort: 80
